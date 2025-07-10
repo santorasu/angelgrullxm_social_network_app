@@ -1,5 +1,6 @@
 import 'package:angelgrullxm_social_network_app/src/core/constant/app_padding.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/common_widgets/custom_bottom.dart';
+import 'package:angelgrullxm_social_network_app/src/feature/screen/auth/mission/presentation/mission_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,7 +48,10 @@ class EnteringName extends StatelessWidget {
             SizedBox(height: 77.h),
 
             Center(
-              child: CustomButton(text: 'Next', onTap: () {}),
+              child: CustomButton(text: 'Next', onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> MissionScreen()));
+
+              }),
             ),
           ],
         ),

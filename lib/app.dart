@@ -1,5 +1,5 @@
 import 'package:angelgrullxm_social_network_app/src/core/theme/theme.dart';
-import 'package:angelgrullxm_social_network_app/src/feature/screen/onboarding_screen/onboarding_screen.dart';
+import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/start_screen/presentaion/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +13,7 @@ class AngelGrullxm extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OnboardingScreen(),
+          home: StartScreen(),
           theme: AppTheme.appTheme,
         );
       },

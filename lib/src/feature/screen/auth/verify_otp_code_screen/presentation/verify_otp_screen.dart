@@ -1,5 +1,6 @@
 import 'package:angelgrullxm_social_network_app/src/feature/common_widgets/custom_bottom.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/screen/auth/email_screen/presentation/email_screen.dart';
+import 'package:angelgrullxm_social_network_app/src/feature/screen/auth/mission/widgets/custom_app_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -19,6 +20,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 121.h, horizontal: 20.w),
         child: Column(
