@@ -1,8 +1,10 @@
+import 'package:angelgrullxm_social_network_app/src/core/constant/app_padding.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/common_widgets/custom_bottom.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/screen/auth/verify_otp_code_screen/presentation/verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../mission/widgets/custom_app_bar_screen.dart';
 import '../widgets/country_picker.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
@@ -15,21 +17,22 @@ class PhoneNumberScreen extends StatefulWidget {
 class PhoneNumberScreenState extends State<PhoneNumberScreen> {
   String? countryCode;
 
-  final TextEditingController _phoneNumberTEController = TextEditingController();
+  final TextEditingController _phoneNumberTEController =
+      TextEditingController();
   final GlobalKey<void> _formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Padding(
-        padding: EdgeInsets.all(20.w),
-        child: SingleChildScrollView(
+    return Padding(
+      padding: AppPadding.allPagePadding(),
+      child: Scaffold(
+        appBar: CustomAppBar(),
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 121.h),
+              SizedBox(height: 20.h),
               Text(
                 'Can we get your\nnumber?',
                 style: TextStyle(
@@ -39,7 +42,6 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
                 ),
               ),
               SizedBox(height: 24.h),
-          
               Form(
                 autovalidateMode: AutovalidateMode.always,
                 key: _formKey,
@@ -72,8 +74,8 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
                             borderSide: BorderSide(color: Colors.white),
                           ),
                         ),
-                        validator: (value){
-                          if(value!.isEmpty){
+                        validator: (value) {
+                          if (value!.isEmpty) {
                             return 'Please enter your number';
                           }
                           return null;
@@ -83,9 +85,9 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
                   ],
                 ),
               ),
-          
-              SizedBox(height: 18.h),
-          
+
+              SizedBox(height: 28.h),
+
               Text(
                 "We'll text you a code to verify you're really you. Message and data rates may apply.",
                 style: TextStyle(
@@ -102,12 +104,20 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
                   color: Color(0xffFC236E),
                 ),
               ),
-          
+
               SizedBox(height: 111.h),
               Center(
-                child: CustomButton(text: 'Next', onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> VerifyOtpScreen()));
-                }),
+                child: CustomButton(
+                  text: 'Next',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VerifyOtpScreen(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
