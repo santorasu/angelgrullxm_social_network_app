@@ -3,7 +3,7 @@ import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../presentation/side_bar_screen.dart';
+import '../../side_bar/presentation/side_bar_screen.dart';
 import '../widgets/app_button.dart';
 import '../widgets/icon_box.dart';
 

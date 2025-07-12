@@ -20,4 +20,5 @@ class AppIcons {
   static const String iconBackground = "$iconsUrl/icon_background.svg";
   static const String languageIconSvg = "$iconsUrl/language.svg";
   static const String dropDownSvg = "$iconsUrl/drop_down.svg";
+  static const String settingIconSvg = "$iconsUrl/settings_icon.svg";
 }
