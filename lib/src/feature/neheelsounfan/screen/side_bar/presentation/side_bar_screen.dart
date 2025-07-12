@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/constant/icons.dart';
-import '../../start_screen/widgets/app_button.dart';
 import '../../start_screen/widgets/icon_box.dart';
 import '../widgets/build_side_bar_tile.dart';
 import '../widgets/term_text.dart';
@@ -17,25 +16,22 @@ class SideBarScreen extends StatelessWidget {
       body: AppScreenBackground(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+            padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgButton(
-                      svgAsset: AppIcons.iconBackground,
-                      icon: SvgPicture.asset(
-                        AppIcons.cancelSvg,
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                      width: 40.w,
-                      height: 40.h,
-                      onTap: () {
+                    GestureDetector(
+                      onTap: (){
                         Navigator.pop(context);
                       },
+                      child: SvgPicture.asset(
+                        AppIcons.cancelSvg,
+                        width: 40.w,
+                        height: 40.h,
+                      ),
                     ),
                     SizedBox(width: 100.w),
                     Container(

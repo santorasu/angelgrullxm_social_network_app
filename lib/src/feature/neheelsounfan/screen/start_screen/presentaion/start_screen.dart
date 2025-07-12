@@ -1,4 +1,5 @@
 import 'package:angelgrullxm_social_network_app/src/core/constant/icons.dart';
+import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/question_answer/presentation/question_answers_screen.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/start_screen/widgets/app_screen_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       body: AppScreenBackground(
         child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 15, top: 54),
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h),
           child: Column(
             children: [
               Row(
@@ -59,7 +60,10 @@ class StartScreen extends StatelessWidget {
                 width: 229,
                 height: 58,
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> SideBarScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SideBarScreen()),
+                  );
                 },
               ),
 
@@ -69,7 +73,14 @@ class StartScreen extends StatelessWidget {
                 text: 'GRID STYLE',
                 width: 229,
                 height: 58,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuestionAnswersScreen(),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 40.h),
 
