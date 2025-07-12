@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SvgButton extends StatelessWidget {
-  final String svgAsset;
+  final String? svgAsset;
   final String? text;
   final SvgPicture? icon;
   final double width;
@@ -12,7 +12,7 @@ class SvgButton extends StatelessWidget {
   final TextStyle? textStyle;
 
   const SvgButton({
-    Key? key,
+    super.key,
     required this.svgAsset,
     this.text,
     this.icon,
@@ -20,8 +20,7 @@ class SvgButton extends StatelessWidget {
     this.width = 229,
     this.height = 58,
     this.textStyle,
-  })  : assert(text != null || icon != null, 'Either text or icon must be provided'),
-        super(key: key);
+  })  : assert(text != null || icon != null, 'Either text or icon must be provided');
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class SvgButton extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             SvgPicture.asset(
-              svgAsset,
+              svgAsset!,
               width: width.w,
               height: height.h,
               fit: BoxFit.fill,

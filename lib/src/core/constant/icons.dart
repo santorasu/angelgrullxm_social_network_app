@@ -10,7 +10,7 @@ class AppIcons {
   static const String volumeIcon = "$iconsUrl/volume.svg";
   static const String inzilly = "$iconsUrl/Inzilly.svg";
   static const String primaryButtonSvg = "$iconsUrl/primary_button.svg";
-  static const String cancelSvg = "$iconsUrl/cancel.svg";
+  static const String cancelSvg = "$iconsUrl/cancel_button.svg";
   static const String musicSvg = "$iconsUrl/music.svg";
   static const String settingsMan = "$iconsUrl/settings_man.svg";
   static const String personSvg = "$iconsUrl/person.svg";
@@ -20,4 +20,8 @@ class AppIcons {
   static const String iconBackground = "$iconsUrl/icon_background.svg";
   static const String languageIconSvg = "$iconsUrl/language.svg";
   static const String dropDownSvg = "$iconsUrl/drop_down.svg";
+  static const String settingIconSvg = "$iconsUrl/settings_icon.svg";
+  static const String threeDotSvg = "$iconsUrl/three_dot.svg";
+  static const String stopWatchSvg = "$iconsUrl/stop-watch.svg";
+  static const String profileSvg = "$iconsUrl/profile.svg";
 }
