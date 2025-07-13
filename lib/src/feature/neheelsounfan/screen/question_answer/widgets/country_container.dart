@@ -37,7 +37,7 @@ class CountryContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           border: isSelected
               ? Border(bottom: BorderSide(color: Color(0xff80FC95), width: 3))
-              : Border.all(color: Colors.green),
+              :Border(bottom: BorderSide(color: Color(0xff2E1126), width: 3)),
         ),
         child: Center(
           child: Text(
