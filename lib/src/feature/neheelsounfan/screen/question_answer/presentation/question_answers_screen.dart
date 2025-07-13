@@ -194,6 +194,7 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                               thumbVisibility: true,
                               thickness: 10,
                               child: SingleChildScrollView(
+                                controller: _scrollController,
                                 scrollDirection: Axis.horizontal,
                                 child: Container(
                                   width: 361.w,

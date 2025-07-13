@@ -24,4 +24,5 @@ class AppIcons {
   static const String threeDotSvg = "$iconsUrl/three_dot.svg";
   static const String stopWatchSvg = "$iconsUrl/stop-watch.svg";
   static const String profileSvg = "$iconsUrl/profile.svg";
+  static const String lineSvg = "$iconsUrl/lineSvg.svg";
 }

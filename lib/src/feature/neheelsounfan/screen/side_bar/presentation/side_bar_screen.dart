@@ -5,7 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/constant/icons.dart';
 import '../../start_screen/widgets/app_screen_background.dart';
 import '../../start_screen/widgets/icon_box.dart';
+import '../riverpod/chceking.dart';
+import '../riverpod/side_bar_notifier.dart';
 import '../widgets/build_side_bar_tile.dart';
+import '../widgets/custom_menu.dart';
 import '../widgets/term_text.dart';
 
 final languageProvider = StateProvider<String>((ref) => 'US English');
@@ -13,17 +16,10 @@ final languageProvider = StateProvider<String>((ref) => 'US English');
 class SideBarScreen extends ConsumerWidget {
   SideBarScreen({super.key});
 
-  final List<String> languages = [
-    'US English',
-    'UK English',
-    'Bangla',
-    'Hindi',
-  ];
+  final _menuKey = GlobalKey();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedLanguage = ref.watch(languageProvider);
-
     return Scaffold(
       body: AppScreenBackground(
         child: Padding(
@@ -45,42 +41,40 @@ class SideBarScreen extends ConsumerWidget {
                     ),
                   ),
                   SizedBox(width: 100.w),
-                  Container(
-                    height: 32.h,
-                    decoration: BoxDecoration(
-                      color: Color(0xffE0E0FF),
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        value: selectedLanguage,
-                        icon: SvgPicture.asset(AppIcons.dropDownSvg),
-                        dropdownColor: Color(0xffE0E0FF),
-                        borderRadius: BorderRadius.circular(8.r),
-                        style: TextStyle(color: Colors.black, fontSize: 16.sp),
-                        onChanged: (String? newValue) {
-                          if (newValue != null) {
-                            ref.read(languageProvider.notifier).state =
-                                newValue;
-                          }
-                        },
-                        items: languages.map<DropdownMenuItem<String>>((
-                          String value,
-                        ) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(AppIcons.languageIconSvg),
-                                SizedBox(width: 8.w),
-                                Text(value),
-                              ],
-                            ),
+                  Consumer(
+                    builder: (_, ref, _) {
+                      final droptext = ref.watch(result) ?? "US English";
+                      return GestureDetector(
+                        key: _menuKey,
+                        onTap: () async {
+                          final value = await customPopupMenu(
+                            context: context,
+                            key: _menuKey,
+                            list: {"US ENGLISH", "عربي"},
+                            height: 150.h,
                           );
-                        }).toList(),
-                      ),
-                    ),
+                          ref.read(result.notifier).state = value;
+                        },
+                        child: Container(
+                          height: 36.h,
+                          width: 148.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8.r),
+                            ),
+                            color: Color(0xFFE0E0FF),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SvgPicture.asset(AppIcons.languageIconSvg),
+                              Text(droptext),
+                              SvgPicture.asset(AppIcons.dropDownSvg),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -88,22 +82,60 @@ class SideBarScreen extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconBox(
-                    icon: SvgPicture.asset(
-                      AppIcons.musicSvg,
-                      height: 28.h,
-                      width: 28.w,
-                    ),
-                    backgroundColor: Color(0xff858BD5).withValues(alpha: 0.5),
+                  Consumer(
+                    builder: (_, ref, _) {
+                      final isVisible = ref.watch(sideBarProvider).isVisible;
+                      return GestureDetector(
+                        onTap: () {
+                          ref.read(sideBarProvider.notifier).onVisibleLine();
+                        },
+                        child: Stack(
+                          children: [
+                            IconBox(
+                              icon: SvgPicture.asset(
+                                AppIcons.musicSvg,
+                                height: 28.h,
+                                width: 28.w,
+                              ),
+                              backgroundColor: Color(
+                                0xff858BD5,
+                              ).withValues(alpha: 0.5),
+                            ),
+                            if (isVisible)
+                              Positioned(
+                                child: SvgPicture.asset(AppIcons.lineSvg),
+                              ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(width: 16.w),
-                  IconBox(
-                    icon: SvgPicture.asset(
-                      AppIcons.volumeIcon,
-                      height: 28.h,
-                      width: 28.w,
-                    ),
-                    backgroundColor: Color(0xff006E2C),
+                  Consumer(
+                    builder: (_, ref, _) {
+                      final isVisible = ref.watch(sideBarProvider).isVisibleVolume;
+                      return GestureDetector(
+                        onTap: () {
+                          ref.read(sideBarProvider.notifier).onVisibleVolume();
+                        },
+                        child: Stack(
+                          children: [
+                            IconBox(
+                              icon: SvgPicture.asset(
+                                AppIcons.volumeIcon,
+                                height: 28.h,
+                                width: 28.w,
+                              ),
+                              backgroundColor: Color(0xff006E2C),
+                            ),
+                            if (isVisible)
+                              Positioned(
+                                child: SvgPicture.asset(AppIcons.lineSvg),
+                              ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
