@@ -1,20 +1,22 @@
-import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/start_screen/widgets/app_screen_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/constant/icons.dart';
+import '../../start_screen/widgets/app_screen_background.dart';
+import '../riverpod/scroll_notifier_provider.dart';
 import '../widgets/country_container.dart';
 import '../widgets/player_container.dart';
 
-class QuestionAnswersScreen extends StatefulWidget {
+class QuestionAnswersScreen extends ConsumerStatefulWidget {
   const QuestionAnswersScreen({super.key});
 
   @override
-  State<QuestionAnswersScreen> createState() => _QuestionAnswersScreenState();
+  _QuestionAnswersScreenState createState() => _QuestionAnswersScreenState();
 }
 
-class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
+class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
+  final ScrollController _scrollController = ScrollController();
   String selectedCountry = '';
   String selectedPlayer = '';
   final List<String> countries = [
@@ -23,11 +25,13 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
     'Australia',
     'United States',
   ];
+
   void _selectCountry(String country) {
     setState(() {
       selectedCountry = country;
     });
   }
+
   final List<Map<String, dynamic>> players = [
     {'name': 'Player 1', 'points': 50},
     {'name': 'Player 2', 'points': 150},
@@ -42,10 +46,19 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      // Use ref.read() to update the scroll position
+      ref.read(scrollPositionProvider.notifier).updateScrollPosition(_scrollController.position.pixels);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppScreenBackground(
-        child: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h),
             child: Column(
@@ -58,10 +71,21 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: SvgPicture.asset(
-                        AppIcons.cancelSvg,
-                        width: 40.w,
-                        height: 40.h,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Color(0xffBA1A1A),
+                              width: 3,
+                            ),
+                          ),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: SvgPicture.asset(
+                          AppIcons.cancelSvg,
+                          width: 40.w,
+                          height: 40.h,
+                        ),
                       ),
                     ),
                     Stack(
@@ -71,12 +95,11 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
                           height: 94.h,
                           width: 94.w,
                           decoration: BoxDecoration(
-                            color: Color(0xffB8F1B9).withValues(alpha: 0.1),
+                            color: Color(0xffB8F1B9).withOpacity(0.1),
                             borderRadius: BorderRadius.circular(100.r),
                           ),
                         ),
                         SvgPicture.asset(AppIcons.stopWatchSvg),
-
                         Positioned(
                           child: Text(
                             '60',
@@ -131,7 +154,6 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.sp,
-
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto Flex',
                       color: Color(0xffffffff),
@@ -163,43 +185,53 @@ class _QuestionAnswersScreenState extends State<QuestionAnswersScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 361.w,
-                          decoration: BoxDecoration(
-                            color: Color(0xff464C92),
-                            borderRadius: BorderRadius.circular(16.r),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: 16.h,
-                              bottom: 16.h,
-                              left: 8.w,
-                            ),
-                            child: SizedBox(
-                              height: 104.h, // Set the height for the container
-                              child: ListView.builder(
-                                scrollDirection:
-                                    Axis.horizontal, // Horizontal scroll
-                                itemCount: players.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 4.w,
+                        // Use ref.watch to listen for changes in scroll position
+                        Consumer(
+                          builder: (context, ref, child) {
+                            final scrollPosition = ref.watch(scrollPositionProvider);
+                            return Scrollbar(
+                              controller: _scrollController,
+                              thumbVisibility: true,
+                              thickness: 10,
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Container(
+                                  width: 361.w,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff464C92),
+                                    borderRadius: BorderRadius.circular(16.r),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 8.h,
+                                      bottom: 18.h,
+                                      left: 8.w,
                                     ),
-                                    child: PlayerContainer(
-                                      name: players[index]['name'],
-                                      points: players[index]['points'],
-                                      isSelected:
-                                          selectedPlayer ==
-                                          players[index]['name'],
-                                      onTap: () =>
-                                          _selectPlayer(players[index]['name']),
+                                    child: SizedBox(
+                                      height: 104.h,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: players.length,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 4.w,
+                                            ),
+                                            child: PlayerContainer(
+                                              name: players[index]['name'],
+                                              points: players[index]['points'],
+                                              isSelected: selectedPlayer == players[index]['name'],
+                                              onTap: () => _selectPlayer(players[index]['name']),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
-                                  );
-                                },
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
                         SizedBox(height: 8.h),
                         Text(

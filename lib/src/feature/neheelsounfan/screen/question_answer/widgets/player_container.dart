@@ -26,8 +26,8 @@ class PlayerContainer extends StatelessWidget {
         width: 104.w,
         height: 80.h,
         padding: EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 16.0,
+          vertical: 8.h,
+          horizontal: 16.w,
         ),
         decoration: BoxDecoration(
           gradient: isSelected
@@ -45,8 +45,8 @@ class PlayerContainer extends StatelessWidget {
           color: isSelected ? null : Color(0xff6B71B9),
           borderRadius: BorderRadius.circular(12),
           border: isSelected
-              ? Border(bottom: BorderSide(color: Color(0xffFFD8EE), width: 3))
-              : Border.all(color: Color(0xff52589F)),
+              ? Border(bottom: BorderSide(color: Color(0xffFFD8EE), width: 4))
+              : Border(bottom: BorderSide(color: Color(0xff52589F), width: 4)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

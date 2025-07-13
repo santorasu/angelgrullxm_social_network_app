@@ -12,6 +12,7 @@ Widget buildSettingsTile({
     decoration: BoxDecoration(
       color: const Color(0xffE0E0FF),
       borderRadius: BorderRadius.circular(12.r),
+      border: Border(bottom: BorderSide(color: Color(0xff00024C), width: 3)),
     ),
     child: ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
