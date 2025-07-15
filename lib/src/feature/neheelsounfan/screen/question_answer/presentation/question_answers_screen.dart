@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/constant/icons.dart';
 import '../../start_screen/widgets/app_screen_background.dart';
 import '../riverpod/scroll_notifier_provider.dart';
-import '../widgets/country_container.dart';
+import '../widgets/primary_button.dart';
 import '../widgets/player_container.dart';
 
 class QuestionAnswersScreen extends ConsumerStatefulWidget {
   const QuestionAnswersScreen({super.key});
 
   @override
-  _QuestionAnswersScreenState createState() => _QuestionAnswersScreenState();
+  QuestionAnswersScreenState createState() => QuestionAnswersScreenState();
 }
 
-class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
+class QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
   final ScrollController _scrollController = ScrollController();
   String selectedCountry = '';
   String selectedPlayer = '';
@@ -49,7 +50,6 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
   void initState() {
     super.initState();
     _scrollController.addListener(() {
-      // Use ref.read() to update the scroll position
       ref.read(scrollPositionProvider.notifier).updateScrollPosition(_scrollController.position.pixels);
     });
   }
@@ -95,7 +95,7 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                           height: 94.h,
                           width: 94.w,
                           decoration: BoxDecoration(
-                            color: Color(0xffB8F1B9).withOpacity(0.1),
+                            color: Color(0xffB8F1B9).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(100.r),
                           ),
                         ),
@@ -103,10 +103,9 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                         Positioned(
                           child: Text(
                             '60',
-                            style: TextStyle(
+                            style: GoogleFonts.robotoFlex(
                               fontSize: 32.sp,
                               fontWeight: FontWeight.w500,
-                              fontFamily: 'Roboto Flex',
                               color: Colors.white,
                             ),
                           ),
@@ -136,10 +135,9 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                     padding: EdgeInsets.all(8.r),
                     child: Text(
                       '100 Points',
-                      style: TextStyle(
+                      style: GoogleFonts.robotoFlex(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'Roboto Flex',
                         color: Color(0xff3D4279),
                       ),
                     ),
@@ -152,10 +150,9 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                   child: Text(
                     'Which Country has the highest population?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.robotoFlex(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'Roboto Flex',
                       color: Color(0xffffffff),
                     ),
                   ),
@@ -174,7 +171,7 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                       ),
                       itemCount: countries.length,
                       itemBuilder: (context, index) {
-                        return CountryContainer(
+                        return PrimaryButton(
                           text: countries[index],
                           isSelected: selectedCountry == countries[index],
                           onTap: () => _selectCountry(countries[index]),
@@ -237,10 +234,9 @@ class _QuestionAnswersScreenState extends ConsumerState<QuestionAnswersScreen> {
                         SizedBox(height: 8.h),
                         Text(
                           'Question 01/15',
-                          style: TextStyle(
+                          style: GoogleFonts.robotoFlex(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'Roboto Flex',
                             color: Color(0xffffffff),
                           ),
                         ),

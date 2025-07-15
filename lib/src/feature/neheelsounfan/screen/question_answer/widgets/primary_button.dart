@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class CountryContainer extends StatelessWidget {
+class PrimaryButton extends StatelessWidget {
   final String text;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const CountryContainer({
+  const PrimaryButton({
     super.key,
     required this.text,
     required this.isSelected,
@@ -42,11 +43,10 @@ class CountryContainer extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
+            style: GoogleFonts.robotoFlex(
               color: isSelected ? Colors.white : Color(0xff2E1126),
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
-              fontFamily: 'Roboto Flex',
             ),
           ),
         ),
