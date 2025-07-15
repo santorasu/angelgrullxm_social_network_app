@@ -67,11 +67,11 @@ class PaymentScreen extends StatelessWidget {
                     quality: 'Standard',
                     title: 'Games',
                     subtitle: 'Max Players',
-                    description: 'Get your game on with 3 quick rounds of fun with your friends!',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
                     buttonText: '\$10 per 3 game',
-                    onTap: () {
-
-                    },
+                    onTap: () {},
+                    rocketBackground: Color(0xffB8F1B9),
                   ),
 
                   // Container(

@@ -13,6 +13,7 @@ class PaymentCardWidget extends StatelessWidget {
   final Function? onTap;
   final String quality;
   final Color color;
+  final Color rocketBackground;
 
   const PaymentCardWidget({
     super.key,
@@ -23,6 +24,7 @@ class PaymentCardWidget extends StatelessWidget {
     required this.onTap,
     required this.quality,
     required this.color,
+    required this.rocketBackground,
   });
 
   @override
@@ -40,7 +42,7 @@ class PaymentCardWidget extends StatelessWidget {
             width: 106.w,
             height: 145.h,
             decoration: BoxDecoration(
-              color: Color(0xffB8F1B9),
+              color: rocketBackground,
               borderRadius: BorderRadius.circular(10.r),
               boxShadow: [
                 BoxShadow(
@@ -89,7 +91,7 @@ class PaymentCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     CardTitle(title: 'Games', titleR: 'Max Players'),
-                    SizedBox(width: 8.w),
+                    SizedBox(width: 21.w),
                     CardTitle(title: ': 6 games', titleR: ': Up to 8 players'),
                   ],
                 ),
@@ -120,7 +122,7 @@ class PaymentCardWidget extends StatelessWidget {
                   borderRadius: 8.r,
                   borderColor: Color(0xff2E1126),
                   textColor: Color(0xff2E1126),
-                  textSize: 20.sp,
+                  textSize: 16.sp,
                 ),
               ],
             ),

@@ -49,11 +49,10 @@ class ChoosePaymentCard extends StatelessWidget {
                     quality: 'Basic',
                     title: 'Games',
                     subtitle: 'Max Players',
-                    description: 'Get your game on with 3 quick rounds of fun with your friends!',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
                     buttonText: '\$10 per 3 game',
-                    onTap: () {
-                      // Handle the on tap logic here
-                    },
+                    onTap: () {}, rocketBackground: Color(0xffE0E0FF),
                   ),
 
                   SizedBox(height: 12.h),
@@ -63,11 +62,10 @@ class ChoosePaymentCard extends StatelessWidget {
                     quality: 'Standard',
                     title: 'Games',
                     subtitle: 'Max Players',
-                    description: 'Get your game on with 3 quick rounds of fun with your friends!',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
                     buttonText: '\$10 per 3 game',
-                    onTap: () {
-                      // Handle the on tap logic here
-                    },
+                    onTap: () {}, rocketBackground: Color(0xffB8F1B9),
                   ),
                   SizedBox(height: 12.h),
 
@@ -76,21 +74,21 @@ class ChoosePaymentCard extends StatelessWidget {
                     quality: 'Premium',
                     title: 'Games',
                     subtitle: 'Max Players',
-                    description: 'Get your game on with 3 quick rounds of fun with your friends!',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
                     buttonText: '\$15 per 3 game',
-                    onTap: () {
-                      // Handle the on tap logic here
-                    },
+                    onTap: () {}, rocketBackground: Color(0xffFFD8EE),
                   ),
-
-
                 ],
               ),
               Spacer(),
               // Grid Style Button
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentScreen()),
+                  );
                 },
                 child: Container(
                   width: 229.w,
