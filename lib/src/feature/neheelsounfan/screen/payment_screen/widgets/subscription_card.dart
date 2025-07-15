@@ -1,3 +1,4 @@
+import 'package:angelgrullxm_social_network_app/src/core/constant/image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,18 +9,20 @@ class PaymentCardWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   final String description;
-  final String price;
   final String buttonText;
-  final Function onTap;
+  final Function? onTap;
+  final String quality;
+  final Color color;
 
   const PaymentCardWidget({
     super.key,
     required this.title,
     required this.subtitle,
     required this.description,
-    required this.price,
     required this.buttonText,
     required this.onTap,
+    required this.quality,
+    required this.color,
   });
 
   @override
@@ -28,7 +31,7 @@ class PaymentCardWidget extends StatelessWidget {
       height: 165.h,
       padding: EdgeInsets.all(8.r),
       decoration: BoxDecoration(
-        color: Color(0xffB8F1B9),
+        color: color,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Row(
@@ -61,7 +64,7 @@ class PaymentCardWidget extends StatelessWidget {
                     border: Border.all(color: Color(0xff1D5128)),
                   ),
                   child: Text(
-                    'Standard',
+                    quality,
                     style: GoogleFonts.robotoFlex(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
@@ -71,7 +74,7 @@ class PaymentCardWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 5.h),
                 Image.asset(
-                  'assets/images/rocket.png', // Change this to your desired image
+                  AppImages.rocketPng,
                   height: 100.h,
                   width: 100.w,
                   fit: BoxFit.cover,
@@ -79,7 +82,7 @@ class PaymentCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 4.w),
+          SizedBox(width: 8.w),
           Expanded(
             child: Column(
               children: [
@@ -101,8 +104,8 @@ class PaymentCardWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 8.h),
                 CustomButton(
-                  text: price,
-                  onTap: () => onTap(),
+                  text: buttonText,
+                  onTap: () => onTap!(),
                   height: 42.h,
                   width: 228.w,
                   gradient: LinearGradient(

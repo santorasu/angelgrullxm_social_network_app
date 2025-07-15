@@ -23,7 +23,9 @@ class PaymentScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     child: SvgPicture.asset(
                       AppIcons.backSvg,
                       width: 40.w,
@@ -61,13 +63,14 @@ class PaymentScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   PaymentCardWidget(
+                    color: Color(0xffB8F1B9),
+                    quality: 'Standard',
                     title: 'Games',
                     subtitle: 'Max Players',
                     description: 'Get your game on with 3 quick rounds of fun with your friends!',
-                    price: '\$10 per 3 game',
                     buttonText: '\$10 per 3 game',
                     onTap: () {
-                      // Handle the on tap logic here
+
                     },
                   ),
 
