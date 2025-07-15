@@ -25,4 +25,5 @@ class AppIcons {
   static const String stopWatchSvg = "$iconsUrl/stop-watch.svg";
   static const String profileSvg = "$iconsUrl/profile.svg";
   static const String lineSvg = "$iconsUrl/lineSvg.svg";
+  static const String backSvg = "$iconsUrl/back_button.svg";
 }
