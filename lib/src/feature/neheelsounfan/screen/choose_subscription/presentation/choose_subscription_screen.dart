@@ -40,7 +40,7 @@ class ChoosePaymentCard extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 14.h),
-              FreeGametile(),
+              ChooseSubscriptionScreen(),
               SizedBox(height: 12.h),
               Column(
                 children: [

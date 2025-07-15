@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../core/constant/icons.dart';
 import '../../../../../core/constant/image.dart';
 
-class FreeGametile extends StatelessWidget {
-  const FreeGametile({super.key});
+class ChooseSubscriptionScreen extends StatelessWidget {
+  const ChooseSubscriptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class FreeGametile extends StatelessWidget {
             SvgPicture.asset(AppIcons.redDmd, height: 32.h, width: 32.w),
             SizedBox(width: 12.w),
             Text(
-              "FREE GAME",
+              "Pay to Play",
               style: style.headlineLarge!.copyWith(
                 fontWeight: FontWeight.w500,
                 fontSize: 26.sp,
