@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:angelgrullxm_social_network_app/src/core/constant/icons.dart';
 import 'package:angelgrullxm_social_network_app/src/core/constant/image.dart';
 
+import '../../create_room/presentation/create_room_screen.dart';
+
 void onPaymentButton(BuildContext context) {
   showDialog(
     context: context,
@@ -66,7 +68,9 @@ void onPaymentButton(BuildContext context) {
                   padding: EdgeInsets.symmetric(horizontal: 28.w),
                   child: CustomButton(
                     text: 'Add Players',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CreateRoomScreen()));
+                    },
                     textSize: 16.sp,
                     textColor: Colors.white,
                     gradient: LinearGradient(
