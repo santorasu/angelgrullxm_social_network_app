@@ -26,4 +26,5 @@ class AppIcons {
   static const String profileSvg = "$iconsUrl/profile.svg";
   static const String lineSvg = "$iconsUrl/lineSvg.svg";
   static const String backSvg = "$iconsUrl/back_button.svg";
+  static const String redDmd = "$iconsUrl/redDmd.svg";
 }
