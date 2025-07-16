@@ -3,15 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextInputLabel extends StatelessWidget {
-  const TextInputLabel({super.key, required this.label, this.optional = ''});
+  const TextInputLabel({super.key, required this.label, this.optional = '', this.start});
 
   final String label;
   final String optional;
+  final MainAxisAlignment? start;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: start ?? MainAxisAlignment.start, // Use start if passed, otherwise default to center
       children: [
         Text(
           label,
@@ -21,14 +23,16 @@ class TextInputLabel extends StatelessWidget {
             color: Color(0xffE0E0FF),
           ),
         ),
-        Text(
-          optional!,
-          style: GoogleFonts.robotoFlex(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            color: Color(0xff858BD5),
+        // Only show the optional text if it's not empty
+        if (optional.isNotEmpty)
+          Text(
+            optional,
+            style: GoogleFonts.robotoFlex(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              color: Color(0xff858BD5),
+            ),
           ),
-        ),
       ],
     );
   }

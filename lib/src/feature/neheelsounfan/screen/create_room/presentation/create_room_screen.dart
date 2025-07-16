@@ -1,9 +1,11 @@
+import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/share_room/presentation/share_room_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:angelgrullxm_social_network_app/src/core/constant/icons.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/start_screen/widgets/app_screen_background.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../widgets/enjoy_free_game.dart';
 import '../widgets/create_room_input_box.dart';
 import '../widgets/text_input_label.dart';
 
@@ -64,35 +66,7 @@ class CreateRoomScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Container(
-                        width: 311.w,
-                        padding: EdgeInsets.all(12.r),
-                        decoration: BoxDecoration(
-                          color: Color(0xff555A92),
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Standard Game',
-                              style: GoogleFonts.robotoFlex(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffE0E0FF),
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              '3 Game, Maximum 4 Player in a Room',
-                              style: GoogleFonts.robotoFlex(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffE0E0FF),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      EnjoyFreeGame(),
                       SizedBox(height: 24.h),
                       TextInputLabel(
                         label: 'Enter Room Name',
@@ -109,7 +83,9 @@ class CreateRoomScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 60.h),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ShareRoomScreen()));
+                        },
                         child: Container(
                           width: 229.w,
                           height: 58.h,
@@ -155,3 +131,5 @@ class CreateRoomScreen extends StatelessWidget {
     );
   }
 }
+
+
