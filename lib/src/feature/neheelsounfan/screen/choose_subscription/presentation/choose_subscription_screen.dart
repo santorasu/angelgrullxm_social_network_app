@@ -1,4 +1,5 @@
 import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/payment_screen/presentation/payment_screen.dart';
+import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/widgets/app_bar_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,72 +18,63 @@ class ChoosePaymentCard extends StatelessWidget {
       body: AppScreenBackground(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          child: Column(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      AppIcons.backSvg,
-                      width: 40.w,
-                      height: 40.h,
-                    ),
-                  ),
-                  Image.asset(AppIcons.profileIcon, width: 40.w, height: 40.h),
-                  SvgPicture.asset(
-                    AppIcons.threeDotSvg,
-                    width: 40.w,
-                    height: 40.h,
-                  ),
-                ],
-              ),
-              SizedBox(height: 14.h),
-              ChooseSubscriptionScreen(),
-              SizedBox(height: 12.h),
+              AppBarIcons(),
+              SizedBox(height: 40.h),
+              Center(child: ChooseSubscriptionScreen()),
+              SizedBox(height: 40.h),
               Column(
                 children: [
                   PaymentCardWidget(
-                    color: Color(0xffE0E0FF),
+                    title: 'Games',
+                    subtitle: ": 6 games",
+                    title2: 'Max Players',
+                    subtitle2: ': Up to 8 Players',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
+                    borderColor: Color(0xff3D4279),
+                    rocketBackground: Color(0xffE0E0FF),
+                    buttonText: '\$5 per 3 game',
                     quality: 'Basic',
-                    title: 'Games',
-                    subtitle: 'Max Players',
-                    description:
-                        'Get your game on with 3 quick rounds of fun with your friends!',
-                    buttonText: '\$10 per 3 game',
-                    onTap: () {}, rocketBackground: Color(0xffE0E0FF),
+                    color: Color(0xffE0E0FF),
                   ),
 
                   SizedBox(height: 12.h),
 
                   PaymentCardWidget(
-                    color: Color(0xffB8F1B9),
+                    title: 'Games',
+                    subtitle: ": 6 games",
+                    title2: 'Max Players',
+                    subtitle2: ': Up to 8 Players',
+                    description:
+                        'Get your game on with 3 quick rounds of fun with your friends!',
+                    borderColor: Color(0xff1D5128),
+                    rocketBackground: Color(0xffB8F1B9),
+                    buttonText: '\$10 per 3 game',
                     quality: 'Standard',
-                    title: 'Games',
-                    subtitle: 'Max Players',
-                    description:
-                        'Get your game on with 3 quick rounds of fun with your friends!',
-                    buttonText: '\$10 per 3 game',
-                    onTap: () {}, rocketBackground: Color(0xffB8F1B9),
+                    color: Color(0xffB8F1B9),
                   ),
                   SizedBox(height: 12.h),
 
                   PaymentCardWidget(
-                    color: Color(0xffFFD8EE),
-                    quality: 'Premium',
                     title: 'Games',
-                    subtitle: 'Max Players',
+                    subtitle: ": 6 games",
+                    title2: 'Max Players',
+                    subtitle2: ': Up to 8 Players',
                     description:
                         'Get your game on with 3 quick rounds of fun with your friends!',
+                    borderColor: Color(0xff2E1126),
+                    rocketBackground: Color(0xffFFD8EE),
                     buttonText: '\$15 per 3 game',
-                    onTap: () {}, rocketBackground: Color(0xffFFD8EE),
+                    quality: 'Premium',
+                    color: Color(0xffFFD8EE),
                   ),
                 ],
               ),
-              Spacer(),
-              // Grid Style Button
+              SizedBox(height: 19.h),
+
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -91,8 +83,14 @@ class ChoosePaymentCard extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  width: 229.w,
-                  height: 58.h,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 66.w,
+                    vertical: 16.h,
+                  ),
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 64.w,
+                    vertical: 16.h,
+                  ),
                   decoration: BoxDecoration(
                     color: Color(0xff008A39),
                     borderRadius: BorderRadius.circular(8.r),
@@ -103,11 +101,9 @@ class ChoosePaymentCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Next',
-                      style: GoogleFonts.robotoFlex(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.titleMedium?.copyWith(color: Colors.white),
                     ),
                   ),
                 ),

@@ -27,11 +27,7 @@ class ChooseSubscriptionScreen extends StatelessWidget {
             SizedBox(width: 12.w),
             Text(
               "Pay to Play",
-              style: style.headlineLarge!.copyWith(
-                fontWeight: FontWeight.w500,
-                fontSize: 26.sp,
-                color: Color(0xffffffff),
-              ),
+              style: Theme.of(context).textTheme.headlineLarge
             ),
           ],
         ),

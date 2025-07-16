@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
   static ThemeData get appTheme => ThemeData(
-    scaffoldBackgroundColor: Colors.black,
     elevatedButtonTheme: AppElevatedButtonTheme.theme,
-    textTheme: AppTextTheme.customTextTheme,
+    textTheme: AppTextTheme.darkTextTheme,
     appBarTheme: AppBarThemeConfig.appBarTheme,
   );
 }
