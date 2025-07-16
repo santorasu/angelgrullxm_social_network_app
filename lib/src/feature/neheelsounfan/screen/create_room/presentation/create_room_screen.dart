@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:angelgrullxm_social_network_app/src/core/constant/icons.dart';
 import 'package:angelgrullxm_social_network_app/src/feature/neheelsounfan/screen/start_screen/widgets/app_screen_background.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../widgets/create_room_input_box.dart';
 import '../widgets/text_input_label.dart';
 
@@ -41,11 +40,11 @@ class CreateRoomScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 28.h),
+              SizedBox(height: 102.h),
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Unlock All Features',
+                  'Create Room',
                   style: GoogleFonts.robotoFlex(
                     fontSize: 28.sp,
                     fontWeight: FontWeight.w500,
@@ -63,12 +62,10 @@ class CreateRoomScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24.r),
                 ),
                 child: SingleChildScrollView(
-                  // Keep SingleChildScrollView here
                   child: Column(
-                    // Removed Expanded here
                     children: [
                       Container(
-                        width: 287.w,
+                        width: 311.w,
                         padding: EdgeInsets.all(12.r),
                         decoration: BoxDecoration(
                           color: Color(0xff555A92),
@@ -110,7 +107,7 @@ class CreateRoomScreen extends StatelessWidget {
                         hintText: 'Select time',
                         suffixIcon: AppIcons.dropDownSvg,
                       ),
-                      SizedBox(height: 28.h),
+                      SizedBox(height: 60.h),
                       GestureDetector(
                         onTap: () {},
                         child: Container(
@@ -130,8 +127,7 @@ class CreateRoomScreen extends StatelessWidget {
                               Positioned.fill(
                                 child: SvgPicture.asset(
                                   AppIcons.primaryButtonSvg,
-                                  fit: BoxFit
-                                      .fill,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                               Center(

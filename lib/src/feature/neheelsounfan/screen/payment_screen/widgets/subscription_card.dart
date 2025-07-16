@@ -8,11 +8,14 @@ import 'card_title.dart';
 class PaymentCardWidget extends StatelessWidget {
   final String title;
   final String subtitle;
+  final String title2;
+  final String subtitle2;
   final String description;
   final String buttonText;
-  final Function? onTap;
   final String quality;
   final Color color;
+  final Color rocketBackground;
+  final Color borderColor;
 
   const PaymentCardWidget({
     super.key,
@@ -20,16 +23,18 @@ class PaymentCardWidget extends StatelessWidget {
     required this.subtitle,
     required this.description,
     required this.buttonText,
-    required this.onTap,
     required this.quality,
     required this.color,
+    required this.rocketBackground,
+    required this.borderColor, required this.title2, required this.subtitle2,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 165.h,
-      padding: EdgeInsets.all(8.r),
+      //1st container
+      //height: 165.h,
+      padding: EdgeInsets.only(left: 8, bottom: 4, top: 4),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(16.r),
@@ -37,10 +42,11 @@ class PaymentCardWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
+            //rocket box container
             width: 106.w,
-            height: 145.h,
+            padding: EdgeInsets.only(top: 4,bottom: 8),
             decoration: BoxDecoration(
-              color: Color(0xffB8F1B9),
+              color: rocketBackground,
               borderRadius: BorderRadius.circular(10.r),
               boxShadow: [
                 BoxShadow(
@@ -52,24 +58,18 @@ class PaymentCardWidget extends StatelessWidget {
               ],
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  //Standard container
                   width: 100.w,
-                  height: 32.h,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: Color(0xff1D5128)),
+                    border: Border.all(color: borderColor),
                   ),
                   child: Text(
                     quality,
-                    style: GoogleFonts.robotoFlex(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff2E1126),
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 SizedBox(height: 5.h),
@@ -82,47 +82,52 @@ class PaymentCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 8.w),
+          SizedBox(width: 4.w),
           Expanded(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    CardTitle(title: 'Games', titleR: 'Max Players'),
-                    SizedBox(width: 8.w),
-                    CardTitle(title: ': 6 games', titleR: ': Up to 8 players'),
-                  ],
-                ),
-                SizedBox(height: 4.h),
-                Text(
-                  description,
-                  style: GoogleFonts.robotoFlex(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff2E1126),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 4,
+                left: 4,
+                bottom: 4,
+                right: 8,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CardTitle(title: title, details: subtitle),
+                  SizedBox(height: 4.h),
+                  CardTitle(title: title2, details: subtitle2),
+                  SizedBox(height: 4.h),
+                  Text(
+                    description,
+                    style: GoogleFonts.robotoFlex(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff2E1126),
+                    ),
                   ),
-                ),
-                SizedBox(height: 8.h),
-                CustomButton(
-                  text: buttonText,
-                  onTap: () => onTap!(),
-                  height: 42.h,
-                  width: 228.w,
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xffF2E792),
-                      Color(0xffF8B133),
-                      Color(0xffDE712B),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+                  SizedBox(height: 8.h),
+                  CustomButton(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    text: buttonText,
+                    onTap: () {},
+                    width: 228.w,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xffF2E792),
+                        Color(0xffF8B133),
+                        Color(0xffDE712B),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    borderRadius: 8.r,
+                    borderColor: Color(0xff2E1126),
+                    textColor: Color(0xff2E1126),
+                    textSize: 20.sp,
                   ),
-                  borderRadius: 8.r,
-                  borderColor: Color(0xff2E1126),
-                  textColor: Color(0xff2E1126),
-                  textSize: 20.sp,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

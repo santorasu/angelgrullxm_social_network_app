@@ -15,30 +15,41 @@ class CreateRoomInputBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 341.w,
-      decoration: BoxDecoration(
-        color: Color(0xffE0E0FF),
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-        child: TextFormField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: hintText,
-            suffixIcon: suffixIcon != null
-                ? SvgPicture.asset(
-              suffixIcon!,
-              width: 24.w,
-              height: 24.h,
-            )
-                : null,
-            hintStyle: GoogleFonts.robotoFlex(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-              color: Color(0xff6B71B9),
-            ),
+    return TextFormField(
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Color(0xffE0E0FF),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8.r)
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        hintText: hintText,
+        suffixIcon: suffixIcon != null
+            ? SvgPicture.asset(
+          suffixIcon!,
+          width: 24.w,
+          height: 24.h,
+        )
+            : null,
+        hintStyle: GoogleFonts.robotoFlex(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff6B71B9),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+            width: 2,
           ),
         ),
       ),
